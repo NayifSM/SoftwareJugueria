@@ -1,13 +1,13 @@
 ﻿@model Shop.Web.Data.Entities.Product
 
 @{
-    ViewData["Title"] = "Detalles";
+    ViewData["Title"] = "Details";
 }
 
-<h2>Detalles del producto</h2>
+<h2>Detalles</h2>
 
 <div>
-    <h4>Producto</h4>
+    <h4>Product</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -26,7 +26,11 @@
             @Html.DisplayNameFor(model => model.ImageUrl)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ImageUrl)
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Url.Content(Model.ImageUrl)" alt="Image" style="width:300px;height:450px;max-width: 100%; height: auto;" />}
+
+
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.UltimaCompra)
@@ -55,6 +59,7 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
-    <a asp-action="Index">Regresar</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"><i class="fa fa-edit"></i>Editar</a> |
+    <a asp-action="Index" class="btn btn-success"><i class="fa fa-chevron-left"></i> Regresar</a>
+
 </div>
